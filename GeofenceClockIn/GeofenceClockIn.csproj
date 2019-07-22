@@ -15,4 +15,27 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\ItemDetailPage.xaml" />
+    <EmbeddedResource Remove="Views\NewItemPage.xaml" />
+    <EmbeddedResource Remove="Views\ItemsPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Views\ItemDetailPage.xaml.cs" />
+    <Compile Remove="Views\NewItemPage.xaml.cs" />
+    <Compile Remove="ViewModels\ItemDetailViewModel.cs" />
+    <Compile Remove="ViewModels\ItemsViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\CurrentShiftPage.xaml.cs">
+      <DependentUpon>CurrentShiftPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\EditShiftPage.xaml.cs">
+      <DependentUpon>EditShiftPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

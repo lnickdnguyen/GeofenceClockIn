@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace GeofenceClockIn.Views
 {
-    public partial class CurrentShiftPage : ContentView
+    public partial class CurrentShiftPage : ContentPage
     {
         public CurrentShiftPage()
         {
