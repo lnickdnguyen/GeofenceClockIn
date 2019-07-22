@@ -10,12 +10,16 @@ using Android.Content;
 using GeofenceClockIn.Droid.Services;
 using Plugin.Geofence;
 using GeofenceClockIn.Services;
+using Android.Support.V4.Content;
+using Android;
+using Android.Support.V4.App;
 
 namespace GeofenceClockIn.Droid
 {
     [Activity(Label = "GeofenceClockIn", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -23,30 +27,66 @@ namespace GeofenceClockIn.Droid
 
             base.OnCreate(savedInstanceState);
 
-            CrossGeofence.Initialize<GeofenceListenerService>();
-
-            StartService();
-
             global::Xamarin.Forms.Forms.SetFlags("Shell_Experimental", "Visual_Experimental", "CollectionView_Experimental", "FastRenderers_Experimental");
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
+
+            if(ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessFineLocation) == Permission.Granted &&
+                    ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessCoarseLocation) == Permission.Granted &&
+                    ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReceiveBootCompleted) == Permission.Granted)
+            {
+                StartGeofencePlugin();
+            }
+            else
+            {
+                ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.AccessFineLocation, Manifest.Permission.AccessCoarseLocation, Manifest.Permission.ReceiveBootCompleted }, 1);
+
+                if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessFineLocation) == Permission.Granted &&
+                    ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessCoarseLocation) == Permission.Granted &&
+                    ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReceiveBootCompleted) == Permission.Granted)
+                {
+                    StartGeofencePlugin();
+                }
+                else
+                {
+                    
+                }
+            }
+
         }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
+            if(requestCode == 1)
+            {
+                if(grantResults.Length == 1 && grantResults[0] == Permission.Granted)
+                {
+                    StartGeofencePlugin();
+                }
+            }
+
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
+        private void StartGeofencePlugin()
+        {
+            CrossGeofence.Initialize<GeofenceListenerService>();
+            CrossGeofence.GeofenceListener.OnAppStarted();
+
+            StartService();
+        }
+
         public void StartService()
         { 
-            StartService(new Intent(this, typeof(GeofenceService)));
+            ApplicationContext.StartService(new Intent(ApplicationContext, typeof(GeofenceService)));
 
             if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Kitkat)
             {
 
-                PendingIntent pintent = PendingIntent.GetService(this, 0, new Intent(this, typeof(GeofenceService)), 0);
+                PendingIntent pintent = PendingIntent.GetService(ApplicationContext, 0, new Intent(ApplicationContext, typeof(GeofenceService)), 0);
                 AlarmManager alarm = (AlarmManager)GetSystemService(Context.AlarmService);
                 alarm.Cancel(pintent);
             }
@@ -54,10 +94,10 @@ namespace GeofenceClockIn.Droid
 
         public void StopService()
         {
-            StopService(new Intent(this, typeof(GeofenceService)));
+            ApplicationContext.StopService(new Intent(ApplicationContext, typeof(GeofenceService)));
             if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Kitkat)
             {
-                PendingIntent pintent = PendingIntent.GetService(this, 0, new Intent(this, typeof(GeofenceService)), 0);
+                PendingIntent pintent = PendingIntent.GetService(ApplicationContext, 0, new Intent(ApplicationContext, typeof(GeofenceService)), 0);
                 AlarmManager alarm = (AlarmManager)GetSystemService(Context.AlarmService);
                 alarm.Cancel(pintent);
             }
