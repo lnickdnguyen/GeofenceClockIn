@@ -3,6 +3,8 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GeofenceClockIn.Views;
+using Plugin.Geofence;
+using Plugin.Geofence.Abstractions;
 
 namespace GeofenceClockIn
 {
@@ -19,6 +21,9 @@ namespace GeofenceClockIn
         protected override void OnStart()
         {
             // Handle when your app starts
+            GeofenceCircularRegion region = new GeofenceCircularRegion("Geo1", 10, 10, 1000);
+
+            CrossGeofence.Current.StartMonitoring(region);
         }
 
         protected override void OnSleep()

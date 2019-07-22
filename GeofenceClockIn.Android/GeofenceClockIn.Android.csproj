@@ -67,6 +67,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\GeofenceService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -99,10 +100,11 @@
     <Folder Include="Resources\drawable-xhdpi\" />
     <Folder Include="Resources\drawable-xxhdpi\" />
     <Folder Include="Resources\drawable-xxxhdpi\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GeofenceClockIn\GeofenceClockIn.csproj">
-      <Project>{C7A94D88-42AE-49A2-9208-57A7EB5D6D8B}</Project>
+      <Project>{744228BF-13B6-4F4E-BB28-36D8F30F1822}</Project>
       <Name>GeofenceClockIn</Name>
     </ProjectReference>
   </ItemGroup>

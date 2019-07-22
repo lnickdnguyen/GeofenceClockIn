@@ -6,6 +6,10 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android.Content;
+using GeofenceClockIn.Droid.Services;
+using Plugin.Geofence;
+using GeofenceClockIn.Services;
 
 namespace GeofenceClockIn.Droid
 {
@@ -19,6 +23,10 @@ namespace GeofenceClockIn.Droid
 
             base.OnCreate(savedInstanceState);
 
+            CrossGeofence.Initialize<GeofenceListenerService>();
+
+            StartService();
+
             global::Xamarin.Forms.Forms.SetFlags("Shell_Experimental", "Visual_Experimental", "CollectionView_Experimental", "FastRenderers_Experimental");
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
@@ -30,5 +38,30 @@ namespace GeofenceClockIn.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+        public void StartService()
+        { 
+            StartService(new Intent(this, typeof(GeofenceService)));
+
+            if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Kitkat)
+            {
+
+                PendingIntent pintent = PendingIntent.GetService(this, 0, new Intent(this, typeof(GeofenceService)), 0);
+                AlarmManager alarm = (AlarmManager)GetSystemService(Context.AlarmService);
+                alarm.Cancel(pintent);
+            }
+        }
+
+        public void StopService()
+        {
+            StopService(new Intent(this, typeof(GeofenceService)));
+            if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Kitkat)
+            {
+                PendingIntent pintent = PendingIntent.GetService(this, 0, new Intent(this, typeof(GeofenceService)), 0);
+                AlarmManager alarm = (AlarmManager)GetSystemService(Context.AlarmService);
+                alarm.Cancel(pintent);
+            }
+        }
+
     }
 }

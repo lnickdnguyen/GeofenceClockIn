@@ -11,20 +11,29 @@ namespace GeofenceClockIn.Droid.Services
     [IntentFilter(new String[] { "com.yourname.GeofenceService" })]
     public class GeofenceService : Service
     {
-        IBinder binder;
+        public override void OnCreate()
+        {
+            base.OnCreate();
+
+            System.Diagnostics.Debug.WriteLine("Geofence Service - Created");
+        }
 
         public override StartCommandResult OnStartCommand(Android.Content.Intent intent, StartCommandFlags flags, int startId)
         {
-            // start your service logic here
-
-            // Return the correct StartCommandResult for the type of service you are building
-            return StartCommandResult.NotSticky;
+            System.Diagnostics.Debug.WriteLine("Geofence Service - Started");
+            return StartCommandResult.Sticky;
         }
 
-        public override IBinder OnBind(Intent intent)
+        public override Android.OS.IBinder OnBind(Android.Content.Intent intent)
         {
-            binder = new GeofenceServiceBinder(this);
-            return binder;
+            System.Diagnostics.Debug.WriteLine("Geofence Service - Binded");
+            return null;
+        }
+
+        public override void OnDestroy()
+        {
+            System.Diagnostics.Debug.WriteLine("Geofence Service - Destroyed");
+            base.OnDestroy();
         }
     }
 
