@@ -2,7 +2,6 @@
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using GeofenceClockIn.Services;
 using GeofenceClockIn.Views;
 
 namespace GeofenceClockIn
@@ -20,10 +19,10 @@ namespace GeofenceClockIn
         {
             InitializeComponent();
 
-            if (UseMockDataStore)
-                DependencyService.Register<MockDataStore>();
-            else
-                DependencyService.Register<AzureDataStore>();
+            //if (UseMockDataStore)
+            //    DependencyService.Register<MockDataStore>();
+            //else
+            //    DependencyService.Register<AzureDataStore>();
             MainPage = new AppShell();
         }
 
