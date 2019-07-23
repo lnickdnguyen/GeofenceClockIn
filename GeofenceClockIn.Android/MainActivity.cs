@@ -13,6 +13,7 @@ using GeofenceClockIn.Services;
 using Android.Support.V4.Content;
 using Android;
 using Android.Support.V4.App;
+using Plugin.Permissions;
 
 namespace GeofenceClockIn.Droid
 {
@@ -27,47 +28,25 @@ namespace GeofenceClockIn.Droid
 
             base.OnCreate(savedInstanceState);
 
+            // Initalize the permissions plugin
+            Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
+
             global::Xamarin.Forms.Forms.SetFlags("Shell_Experimental", "Visual_Experimental", "CollectionView_Experimental", "FastRenderers_Experimental");
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
 
-            if(ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessFineLocation) == Permission.Granted &&
-                    ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessCoarseLocation) == Permission.Granted &&
-                    ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReceiveBootCompleted) == Permission.Granted)
-            {
-                StartGeofencePlugin();
-            }
-            else
-            {
-                ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.AccessFineLocation, Manifest.Permission.AccessCoarseLocation, Manifest.Permission.ReceiveBootCompleted }, 1);
+            var status1 = ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessCoarseLocation);
+            var status2 = ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessFineLocation);
+            var status3 = ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReceiveBootCompleted);
 
-                if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessFineLocation) == Permission.Granted &&
-                    ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessCoarseLocation) == Permission.Granted &&
-                    ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReceiveBootCompleted) == Permission.Granted)
-                {
-                    StartGeofencePlugin();
-                }
-                else
-                {
-                    
-                }
-            }
-
+            StartGeofencePlugin();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
-            if(requestCode == 1)
-            {
-                if(grantResults.Length == 1 && grantResults[0] == Permission.Granted)
-                {
-                    StartGeofencePlugin();
-                }
-            }
-
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 

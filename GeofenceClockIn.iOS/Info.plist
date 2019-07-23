@@ -42,5 +42,7 @@
 	<string>Must use location to automatically clock you in and out.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Must use location to automatically clock you in and out.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Must use location to automatically clock you in and out.</string>
 </dict>
 </plist>
