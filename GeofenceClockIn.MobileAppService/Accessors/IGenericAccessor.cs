@@ -1,12 +1,12 @@
-﻿using Square.Connect.Model;
+﻿using GeofenceClockIn.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GeofenceClockIn.MobileAppService.Services
+namespace GeofenceClockIn.MobileAppService.Accessors
 {
-    public interface ISquareService
+    public interface IGenericAccessor
     {
         List<Shift> GetAllShiftsByEmployeeId(string employeeId);
 
