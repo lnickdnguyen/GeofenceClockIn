@@ -1,11 +1,19 @@
 ﻿using System;
 using System.Diagnostics;
+using GeofenceClockIn.Models;
 using Plugin.Geofence.Abstractions;
 
 namespace GeofenceClockIn.Services
 {
     public class GeofenceListenerService : IGeofenceListener
     {
+        private ApiService apiService;
+
+        public GeofenceListenerService()
+        {
+            apiService = new ApiService();
+        }
+
         public void OnAppStarted()
         {
             Debug.WriteLine("App started");
@@ -39,6 +47,29 @@ namespace GeofenceClockIn.Services
         public void OnRegionStateChanged(GeofenceResult result)
         {
             Debug.WriteLine($"Region State changed to {result.TransitionName} for region {result.RegionId}.");
+
+            if(result.Transition == GeofenceTransition.Entered)
+            {
+                Shift newShift = new Shift
+                {
+                    CompanyId = "Yo",
+                    EmployeeId = "Jarod",
+                    LocationId = "YoCity",
+                    StartTime = DateTime.Now,
+                    Wage = new ShiftWage { Title = "Prankster", HourlyRate=500 }
+                };
+
+                SettingsService.currentShift = newShift;
+            }else if(result.Transition == GeofenceTransition.Exited)
+            {
+                if (SettingsService.currentShift == null)
+                    return;
+
+                Shift currentShift = SettingsService.currentShift;
+                currentShift.EndTime = DateTime.Now;
+
+                apiService.CreateShift(currentShift);
+            }
         }
     }
 }

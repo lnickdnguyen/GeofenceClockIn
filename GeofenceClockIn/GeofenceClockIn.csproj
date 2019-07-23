@@ -16,6 +16,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Plugin.Geofence" Version="1.0.1" />
     <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\ItemDetailPage.xaml" />
@@ -42,5 +43,10 @@
     <Compile Update="Views\AllShiftsPage.xaml.cs">
       <DependentUpon>AllShiftsPage.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 </Project>
