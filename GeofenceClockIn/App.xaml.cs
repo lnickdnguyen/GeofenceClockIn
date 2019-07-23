@@ -3,27 +3,46 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GeofenceClockIn.Views;
+using Plugin.Geofence;
+using Plugin.Geofence.Abstractions;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 
 namespace GeofenceClockIn
 {
     public partial class App : Application
     {
-        //TODO: Replace with *.azurewebsites.net url after deploying backend to Azure
-        //To debug on Android emulators run the web backend against .NET Core not IIS
-        //If using other emulators besides stock Google images you may need to adjust the IP address
-        public static string AzureBackendUrl =
-            DeviceInfo.Platform == DevicePlatform.Android ? "http://10.0.2.2:5000" : "http://localhost:5000";
-        public static bool UseMockDataStore = true;
 
         public App()
         {
             InitializeComponent();
 
-            //if (UseMockDataStore)
-            //    DependencyService.Register<MockDataStore>();
-            //else
-            //    DependencyService.Register<AzureDataStore>();
+            CheckPermissions();
+
             MainPage = new AppShell();
+        }
+
+        private async void CheckPermissions()
+        {
+            bool locationStatus = (await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location)) == PermissionStatus.Granted;
+            bool locationAlwaysStatus = (await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.LocationAlways)) == PermissionStatus.Granted;
+
+            if (!(locationStatus && locationAlwaysStatus))
+            {
+                //Shell.Current.DisplayAlert("Permissions Needed", "For this app to run properly we need some permissions. When requested please grant location permissions. If you do not grant these permissions the app will not run.", "Will do buckaroo!").RunSynchronously();
+                locationStatus = (await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location))[Permission.Location] == PermissionStatus.Granted;
+                locationAlwaysStatus = (await CrossPermissions.Current.RequestPermissionsAsync(Permission.LocationAlways))[Permission.LocationAlways] == PermissionStatus.Granted;
+            }
+
+            if (locationStatus && locationAlwaysStatus)
+            {
+                //GeofenceCircularRegion region = new GeofenceCircularRegion("Geo1", 10, 10, 1000);
+                //CrossGeofence.Current.StartMonitoring(region);
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Permissions Needed", "App will not function since you did not grant permission data. Please grant permission to location to 'GeofenceClockIn' in settings.", "Yeah man, shore.");
+            }
         }
 
         protected override void OnStart()

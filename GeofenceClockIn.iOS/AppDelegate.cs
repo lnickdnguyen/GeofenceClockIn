@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using GeofenceClockIn.Services;
+using Plugin.Geofence;
 using UIKit;
 
 namespace GeofenceClockIn.iOS
@@ -25,6 +27,9 @@ namespace GeofenceClockIn.iOS
             global::Xamarin.Forms.Forms.SetFlags("Shell_Experimental", "Visual_Experimental", "CollectionView_Experimental", "FastRenderers_Experimental");
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
+
+            //Initialization of geofence listener service
+            CrossGeofence.Initialize<GeofenceListenerService>();
 
             return base.FinishedLaunching(app, options);
         }

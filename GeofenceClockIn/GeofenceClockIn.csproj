@@ -14,6 +14,34 @@
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Plugin.Geofence" Version="1.0.1" />
+    <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\ItemDetailPage.xaml" />
+    <EmbeddedResource Remove="Views\NewItemPage.xaml" />
+    <EmbeddedResource Remove="Views\ItemsPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Views\ItemDetailPage.xaml.cs" />
+    <Compile Remove="Views\NewItemPage.xaml.cs" />
+    <Compile Remove="ViewModels\ItemDetailViewModel.cs" />
+    <Compile Remove="ViewModels\ItemsViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\CurrentShiftPage.xaml.cs">
+      <DependentUpon>CurrentShiftPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\EditShiftPage.xaml.cs">
+      <DependentUpon>EditShiftPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AllShiftsPage.xaml.cs">
+      <DependentUpon>AllShiftsPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

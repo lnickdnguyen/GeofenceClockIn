@@ -134,14 +134,14 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
+    <PackageReference Include="Xamarin.Forms" Version="4.1.0.581479" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\GeofenceClockIn\GeofenceClockIn.csproj">
-      <Project>{C7A94D88-42AE-49A2-9208-57A7EB5D6D8B}</Project>
+      <Project>{744228BF-13B6-4F4E-BB28-36D8F30F1822}</Project>
       <Name>GeofenceClockIn</Name>
     </ProjectReference>
   </ItemGroup>
