@@ -4,8 +4,54 @@
              x:Class="GeofenceClockIn.Views.CurrentShiftPage"
              Title="Geo-Fenced Time Card">
     <ContentPage.Content>
-        <StackLayout Padding="15">
-            <Label Text="Current Shifts Page"/>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Spacing="25" Padding="0" BackgroundColor="White">
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="300" VerticalOptions="Start" Color="Gray" />
+                <Frame BackgroundColor="DarkGray" BorderColor="White">
+                    <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="20" Padding="20" BackgroundColor="White">
+                        <Label Text="Start Your Shift" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
+                        <StackLayout Orientation="Horizontal" HeightRequest="75" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
+                            <StackLayout HeightRequest="75" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
+                                <Label Text="X" HorizontalTextAlignment="Center" FontSize="32" FontAttributes="Bold" />
+                                <Label Text="Location" HorizontalTextAlignment="Center" FontSize="12" FontAttributes="Bold" />
+                            </StackLayout>
+                            <Label Text="or" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="12" FontAttributes="Bold" />
+                            <StackLayout HeightRequest="75" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
+                                <Button Text="Start" HorizontalOptions="Center" VerticalOptions="Center" />
+                                <Label Text="Manual" HorizontalTextAlignment="Center" FontSize="12" FontAttributes="Bold" />
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Color="White" />
+            </StackLayout>
+        </ScrollView>
+        
+        
+        
+        
+        <!--CLOCKED IN
+        <ScrollView>
+            <StackLayout Spacing="25" Padding="0" BackgroundColor="White">
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="200" VerticalOptions="Start" Color="Gray" />
+                <Frame BackgroundColor="Green" BorderColor="White">
+                    <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="20" Padding="20" BackgroundColor="White">
+                        <Label Text="Clocked In!" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" TextColor="Green"/>
+                        <StackLayout Orientation="Horizontal" HeightRequest="75" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
+                            <StackLayout HeightRequest="75" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
+                                <Label Text="Start" FontSize="12" FontAttributes="Bold" />
+                                <TimePicker></TimePicker>
+                            </StackLayout>
+                            <StackLayout HeightRequest="75" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
+                                <Label Text="End" FontSize="12" FontAttributes="Bold" />
+                                <TimePicker></TimePicker>
+                            </StackLayout>
+                        </StackLayout>
+                        <Button Text="End Shift" VerticalOptions="Start" />
+                    </StackLayout>
+                </Frame>
+                <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Color="White" />
+            </StackLayout>
+        </ScrollView>-->
     </ContentPage.Content>
 </ContentPage>
