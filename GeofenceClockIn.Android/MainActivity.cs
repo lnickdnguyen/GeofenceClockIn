@@ -36,10 +36,6 @@ namespace GeofenceClockIn.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
 
-            var status1 = ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessCoarseLocation);
-            var status2 = ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessFineLocation);
-            var status3 = ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReceiveBootCompleted);
-
             StartGeofencePlugin();
         }
 
