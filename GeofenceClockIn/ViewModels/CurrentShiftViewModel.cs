@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Plugin.Geofence;
 using Plugin.Geofence.Abstractions;
+using Xamarin.Forms;
 
 namespace GeofenceClockIn.ViewModels
 {
@@ -22,9 +23,28 @@ namespace GeofenceClockIn.ViewModels
             set { SetProperty(ref _isEndShiftActive, value); }
         }
 
+        public Command StartShiftCommand { get; set; }
+        public Command EndShiftCommand { get; set; }
+
         public CurrentShiftViewModel()
         {
             Title = "hello";
+
+            _isStartShiftActive = true;
+            _isEndShiftActive = false;
+
+            StartShiftCommand = new Command(OnStartShift);
+            EndShiftCommand = new Command(OnEndShift);
+        }
+
+        private void OnStartShift()
+        {
+            IsStartShiftActive = false;
+            IsEndShiftActive = true;
+        }
+
+        private void OnEndShift()
+        {
             _isStartShiftActive = true;
             _isEndShiftActive = false;
 
