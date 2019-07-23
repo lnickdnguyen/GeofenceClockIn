@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Plugin.Geofence;
+using Plugin.Geofence.Abstractions;
 
 namespace GeofenceClockIn.ViewModels
 {
@@ -25,6 +27,9 @@ namespace GeofenceClockIn.ViewModels
             Title = "hello";
             _isStartShiftActive = true;
             _isEndShiftActive = false;
+
+            GeofenceCircularRegion region = new GeofenceCircularRegion("Geo1", 10, 10, 1000);
+            CrossGeofence.Current.StartMonitoring(region);
         }
     }
 }

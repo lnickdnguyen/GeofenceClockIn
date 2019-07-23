@@ -16,7 +16,7 @@ namespace GeofenceClockIn.Services
             }
         }
 
-        public static Shift currentShift
+        public static Shift CurrentShift
         {
             get
             {
@@ -25,6 +25,30 @@ namespace GeofenceClockIn.Services
             set
             {
                 AppSettings.AddOrUpdateValue("currentshift", JsonConvert.SerializeObject(value));
+            }
+        }
+
+        public static bool MonitoringLocation
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("monitoringlocation", false);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("monitoringlocation", value);
+            }
+        }
+
+        public static bool FirstOpen
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("firstopen", true);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("firstopen", value);
             }
         }
     }

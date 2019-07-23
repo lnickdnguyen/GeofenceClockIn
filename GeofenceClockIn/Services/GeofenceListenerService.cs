@@ -59,13 +59,14 @@ namespace GeofenceClockIn.Services
                     Wage = new ShiftWage { Title = "Prankster", HourlyRate=500 }
                 };
 
-                SettingsService.currentShift = newShift;
-            }else if(result.Transition == GeofenceTransition.Exited)
+                SettingsService.CurrentShift = newShift;
+            }
+            else if(result.Transition == GeofenceTransition.Exited)
             {
-                if (SettingsService.currentShift == null)
+                if (SettingsService.CurrentShift == null)
                     return;
 
-                Shift currentShift = SettingsService.currentShift;
+                Shift currentShift = SettingsService.CurrentShift;
                 currentShift.EndTime = DateTime.Now;
 
                 apiService.CreateShift(currentShift);
