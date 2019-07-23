@@ -37,22 +37,27 @@
                 <Frame AbsoluteLayout.LayoutBounds="0,0,1,.65" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Red" >
                     ~~~
                 </Frame>
-                <Frame AbsoluteLayout.LayoutBounds="1,1,1,.35" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Green" >
+                <Frame IsVisible="False" AbsoluteLayout.LayoutBounds="1,1,1,.35" AbsoluteLayout.LayoutFlags="All" BackgroundColor="LightGray" >
                     <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="20" Padding="20" BackgroundColor="White">
                         <Label Text="Start Your Shift" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
-                        <Label Text="Once you arrive at work, we'll start a shift for you" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black"/>
-                        <StackLayout Orientation="Horizontal" HeightRequest="75" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
-                            <StackLayout HeightRequest="75" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
-                                <Label Text="X" HorizontalTextAlignment="Center" FontSize="32" FontAttributes="Bold" />
-                                <Label Text="Location Services" HorizontalTextAlignment="Center" FontSize="12" FontAttributes="Bold" />
-                            </StackLayout>
-                            <Label Text="or" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="12" FontAttributes="Bold" />
-                            <StackLayout HeightRequest="75" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
-                                <Button Text="Start" HorizontalOptions="Center" VerticalOptions="Center" />
-                                <Label Text="Manual" HorizontalTextAlignment="Center" FontSize="12" FontAttributes="Bold" />
-                            </StackLayout>
+                        <Label Text="Once you arrive at work, we'll automatically start your shift" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" HorizontalTextAlignment="Center"/>
+                        <StackLayout Orientation="Horizontal" HeightRequest="75" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="0">
+                            <Button Text="X" HorizontalOptions="Start" VerticalOptions="End" />
+                            <Button Text="X" HorizontalOptions="EndAndExpand" VerticalOptions="End" />
                         </StackLayout>
-
+                    </StackLayout>
+                </Frame>
+                <Frame IsVisible="True" AbsoluteLayout.LayoutBounds="1,1,1,.35" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Green" >
+                    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="20" Padding="20" BackgroundColor="White">
+                        <Label Text="You're Clocked In!" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" TextColor="Green"/>
+                        <Label Text="We'll clock you out automatically once you leave work" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" HorizontalTextAlignment="Center"/>
+                        <StackLayout Orientation="Horizontal" HeightRequest="75" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="0">
+                            <Button Text="X" HorizontalOptions="Start" VerticalOptions="End" />
+                            <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Spacing="0">
+                                <TimePicker></TimePicker>
+                            </StackLayout>
+                            <Button Text="X" HorizontalOptions="EndAndExpand" VerticalOptions="End" />
+                        </StackLayout>
                     </StackLayout>
                 </Frame>
             </AbsoluteLayout>
