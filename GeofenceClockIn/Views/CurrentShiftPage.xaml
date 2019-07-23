@@ -21,7 +21,7 @@
                         <Label Text="Once you arrive at work, we'll automatically start your shift" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" HorizontalTextAlignment="Center"/>
                         <StackLayout Orientation="Horizontal" HeightRequest="75" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="0">
                             <Button Text="X" HorizontalOptions="Start" VerticalOptions="End" />
-                            <Button Clicked="StartShiftButton_Clicked" Text=">" HorizontalOptions="EndAndExpand" VerticalOptions="End" />
+                            <Button Command="{Binding StartShiftCommand}" Text=">" HorizontalOptions="EndAndExpand" VerticalOptions="End" />
                         </StackLayout>
                     </StackLayout>
                 </Frame>
@@ -34,7 +34,7 @@
                             <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Spacing="0">
                                 <TimePicker></TimePicker>
                             </StackLayout>
-                            <Button Clicked="EndShiftButton_Clicked" Text="X" HorizontalOptions="EndAndExpand" VerticalOptions="End" />
+                            <Button Command="{Binding EndShiftCommand}" Text="X" HorizontalOptions="EndAndExpand" VerticalOptions="End" />
                         </StackLayout>
                     </StackLayout>
                 </Frame>
