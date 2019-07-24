@@ -18,7 +18,7 @@ namespace GeofenceClockIn.Views
 
             MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(location.Latitude, location.Longitude), Distance.FromMiles(5)));
 
-            MyMap.Pins.Add(new Pin { Label="Work", Position=new Position(41.43,-97.36) });
+            MyMap.Pins.Add(new Pin { Label="Work", Position=new Position(47.637, -122.133) });
         }
     }
 }
