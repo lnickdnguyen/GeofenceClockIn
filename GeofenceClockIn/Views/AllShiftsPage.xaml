@@ -11,17 +11,20 @@
 
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="20" Padding="20" BackgroundColor="White">
+            <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Spacing="20" Padding="20" BackgroundColor="White">
                 <Label Text="Your Shifts" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
-                <ListView x:Name="MainListView" ItemsSource="{Binding AllShiftsList}">
+                <ListView x:Name="MainListView" ItemsSource="{Binding AllShiftsList}" SeparatorVisibility="None" HasUnevenRows="true"
+                          VerticalOptions="StartAndExpand">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Frame BorderColor="Black" HeightRequest="125">
-                                    <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
-                                        <Label Text="{Binding StartTime, StringFormat='{0:MMMM dd, yyyy}'}" FontSize="16" FontAttributes="Bold" VerticalOptions="Center" />
-                                        <Label Text="{Binding StartTime, StringFormat='{}{0:hh\\:mm}'}" FontSize="14" VerticalOptions="Center" />
-                                        <Label Text="{Binding EndTime, StringFormat='{}{0:hh\\:mm}'}" FontSize="14" VerticalOptions="Center" />
+                                <Frame BorderColor="Black" CornerRadius="10" Margin="5" HasShadow="false">
+                                    <StackLayout Padding="5">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="{Binding StartTime, StringFormat='{0:MMMM dd, yyyy}'}" FontSize="16" FontAttributes="Bold" VerticalOptions="Center" />
+                                            <Label Text="{Binding StartTime, StringFormat='{}{0:hh\\:mm}'}" FontSize="14" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                                            <Label Text="{Binding EndTime, StringFormat='{}{0:hh\\:mm}'}" FontSize="14" VerticalOptions="Center" HorizontalOptions="End"/>
+                                        </StackLayout>
                                     </StackLayout>
                                 </Frame>
                             </ViewCell>
