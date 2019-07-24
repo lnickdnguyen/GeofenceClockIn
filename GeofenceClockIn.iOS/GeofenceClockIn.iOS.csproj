@@ -145,4 +145,7 @@
       <Name>GeofenceClockIn</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\location_pin.png" />
+  </ItemGroup>
 </Project>
