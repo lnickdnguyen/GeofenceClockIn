@@ -20,10 +20,11 @@
                 <Frame IsVisible="{Binding IsStartShiftActive}" AbsoluteLayout.LayoutBounds="1,1,1,.35" AbsoluteLayout.LayoutFlags="All" BackgroundColor="LightGray" >
                     <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="20" Padding="20" BackgroundColor="#FBF9FC">
                         <Label Text="Start Your Shift" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" TextColor="#4D4C59"/>
-                        <Label Text="Once you arrive at work, we'll automatically start your shift" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" HorizontalTextAlignment="Center"/>
+                        <Label Text="Once you arrive at work, we'll automatically start your shift" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" HorizontalTextAlignment="Center"/>
                         <StackLayout Orientation="Horizontal" HeightRequest="75" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="0">
-                            <Button Text="Profile" HorizontalOptions="Start" VerticalOptions="End" BackgroundColor="#5299D3" CornerRadius="15" TextColor="White" Padding="10" FontAttributes="Bold"/>
-                            <Button Command="{Binding StartShiftCommand}" Text="Start" FontAttributes="Bold" FontSize="Large" HorizontalOptions="EndAndExpand" VerticalOptions="End" BackgroundColor="#76AE66" TextColor="White" CornerRadius="15" Padding="10" ImageSource="start_button.png"/>
+                            <Button HorizontalOptions="Start" VerticalOptions="End" BackgroundColor="#5299D3" CornerRadius="15" TextColor="White" 
+                                    Text="Profile" Padding="10" FontAttributes="Bold" ImageSource="profile_icon.png"/>
+                            <Button Command="{Binding StartShiftCommand}" Text="Start" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalOptions="End" BackgroundColor="#76AE66" TextColor="White" CornerRadius="15" Padding="10" ImageSource="start_button.png"/>
                         </StackLayout>
                     </StackLayout>
                 </Frame>
@@ -32,11 +33,12 @@
                         <Label Text="You're Clocked In!" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" TextColor="#76AE66"/>
                         <Label Text="We'll clock you out automatically once you leave work" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" HorizontalTextAlignment="Center"/>
                         <StackLayout Orientation="Horizontal" HeightRequest="75" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="0">
-                            <Button Text="Profile" HorizontalOptions="Start" VerticalOptions="End" BackgroundColor="#5299D3" CornerRadius="15" TextColor="White" Padding="10" FontAttributes="Bold"/>
+                            <Button HorizontalOptions="Start" VerticalOptions="End" BackgroundColor="#5299D3" CornerRadius="15" TextColor="White" 
+                                    Text="Profile" Padding="10" FontAttributes="Bold" ImageSource="profile_icon.png"/>
                             <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Spacing="0">
                                 <TimePicker Time="{Binding ClockedInTime}"></TimePicker>
                             </StackLayout>
-                            <Button Command="{Binding EndShiftCommand}" HorizontalOptions="EndAndExpand" VerticalOptions="End" BackgroundColor="#E55A40" TextColor="White" CornerRadius="15" Padding="10" ImageSource="stop_button.png"/>
+                            <Button Text="End" Command="{Binding EndShiftCommand}" HorizontalOptions="EndAndExpand" VerticalOptions="End" BackgroundColor="#E55A40" TextColor="White" CornerRadius="15" Padding="10" ImageSource="stop_button.png"/>
                         </StackLayout>
                     </StackLayout>
                 </Frame>
