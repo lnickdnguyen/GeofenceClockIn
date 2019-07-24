@@ -65,8 +65,6 @@ namespace GeofenceClockIn.ViewModels
         {
             _isStartShiftActive = true;
             _isEndShiftActive = false;
-<<<<<<< HEAD
-=======
 
             if (SettingsService.CurrentShift == null)
                 return;
@@ -74,7 +72,6 @@ namespace GeofenceClockIn.ViewModels
             Shift currentShift = SettingsService.CurrentShift;
             currentShift.EndTime = DateTime.Now;
             _apiService.CreateShift(currentShift);
->>>>>>> cea992d5414a675019f19e9a14dfd42c519f1b3a
         }
     }
 }
