@@ -23,7 +23,7 @@
                         <Label Text="Once you arrive at work, we'll automatically start your shift" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" HorizontalTextAlignment="Center"/>
                         <StackLayout Orientation="Horizontal" HeightRequest="75" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="0">
                             <Button Text="Profile" HorizontalOptions="Start" VerticalOptions="End" BackgroundColor="#5299D3" CornerRadius="15" TextColor="White" Padding="10" FontAttributes="Bold"/>
-                            <Button Command="{Binding StartShiftCommand}" Text="Start" HorizontalOptions="EndAndExpand" VerticalOptions="End" BackgroundColor="#76AE66" TextColor="White" CornerRadius="15" Padding="10" FontAttributes="Bold"/>
+                            <Button Command="{Binding StartShiftCommand}" Text="Start" FontAttributes="Bold" FontSize="Large" HorizontalOptions="EndAndExpand" VerticalOptions="End" BackgroundColor="#76AE66" TextColor="White" CornerRadius="15" Padding="10" ImageSource="start_button.png"/>
                         </StackLayout>
                     </StackLayout>
                 </Frame>
@@ -36,7 +36,7 @@
                             <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Spacing="0">
                                 <TimePicker Time="{Binding ClockedInTime}"></TimePicker>
                             </StackLayout>
-                            <Button Command="{Binding EndShiftCommand}" Text="End" HorizontalOptions="EndAndExpand" VerticalOptions="End" BackgroundColor="#E55A40" TextColor="White" CornerRadius="15" Padding="10" FontAttributes="Bold"/>
+                            <Button Command="{Binding EndShiftCommand}" HorizontalOptions="EndAndExpand" VerticalOptions="End" BackgroundColor="#E55A40" TextColor="White" CornerRadius="15" Padding="10" ImageSource="stop_button.png"/>
                         </StackLayout>
                     </StackLayout>
                 </Frame>
