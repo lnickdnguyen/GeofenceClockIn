@@ -11,7 +11,6 @@
         <local:CurrentShiftViewModel />
     </ContentPage.BindingContext>
     
-    
     <ContentPage.Content>
         <ScrollView>
             <AbsoluteLayout>
@@ -20,24 +19,24 @@
                 </Frame>
                 <Frame IsVisible="{Binding IsStartShiftActive}" AbsoluteLayout.LayoutBounds="1,1,1,.35" AbsoluteLayout.LayoutFlags="All" BackgroundColor="LightGray" >
                     <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="20" Padding="20" BackgroundColor="White">
-                        <Label Text="Start Your Shift" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
+                        <Label Text="Start Your Shift" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" TextColor="#4D4C59"/>
                         <Label Text="Once you arrive at work, we'll automatically start your shift" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" HorizontalTextAlignment="Center"/>
                         <StackLayout Orientation="Horizontal" HeightRequest="75" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="0">
-                            <Button Text="☺" HorizontalOptions="Start" VerticalOptions="End" />
-                            <Button Command="{Binding StartShiftCommand}" Text="►" HorizontalOptions="EndAndExpand" VerticalOptions="End" />
+                            <Button Text="Profile" HorizontalOptions="Start" VerticalOptions="End" BackgroundColor="#5299D3" CornerRadius="15" TextColor="White" Padding="10" FontAttributes="Bold"/>
+                            <Button Command="{Binding StartShiftCommand}" Text="Start" HorizontalOptions="EndAndExpand" VerticalOptions="End" BackgroundColor="#76AE66" TextColor="White" CornerRadius="15" Padding="10" FontAttributes="Bold"/>
                         </StackLayout>
                     </StackLayout>
                 </Frame>
-                <Frame IsVisible="{Binding IsEndShiftActive}" AbsoluteLayout.LayoutBounds="1,1,1,.35" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Green" >
+                <Frame IsVisible="{Binding IsEndShiftActive}" AbsoluteLayout.LayoutBounds="1,1,1,.35" AbsoluteLayout.LayoutFlags="All" BackgroundColor="#A1EF8B" >
                     <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="20" Padding="20" BackgroundColor="White">
-                        <Label Text="You're Clocked In!" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" TextColor="Green"/>
+                        <Label Text="You're Clocked In!" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" TextColor="#76AE66"/>
                         <Label Text="We'll clock you out automatically once you leave work" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" HorizontalTextAlignment="Center"/>
                         <StackLayout Orientation="Horizontal" HeightRequest="75" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="0">
-                            <Button Text="☺" HorizontalOptions="Start" VerticalOptions="End" />
+                            <Button Text="Profile" HorizontalOptions="Start" VerticalOptions="End" BackgroundColor="#5299D3" CornerRadius="15" TextColor="White" Padding="10" FontAttributes="Bold"/>
                             <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Spacing="0">
                                 <TimePicker Time="{Binding ClockedInTime}"></TimePicker>
                             </StackLayout>
-                            <Button Command="{Binding EndShiftCommand}" Text="✖" HorizontalOptions="EndAndExpand" VerticalOptions="End" />
+                            <Button Command="{Binding EndShiftCommand}" Text="End" HorizontalOptions="EndAndExpand" VerticalOptions="End" BackgroundColor="#5E5C6C" TextColor="White" CornerRadius="15" Padding="10" FontAttributes="Bold"/>
                         </StackLayout>
                     </StackLayout>
                 </Frame>

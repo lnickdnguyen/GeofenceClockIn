@@ -2,6 +2,7 @@
 using GeofenceClockIn.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace GeofenceClockIn.ViewModels
@@ -26,6 +27,18 @@ namespace GeofenceClockIn.ViewModels
         public async void GetAllShifts()
         {
             AllShiftsList = await _apiService.GetAllShifts("Jarod");
+            AllShiftsList = AllShiftsList.Select(s =>
+            {
+                return new Shift
+                {
+                    CompanyId = s.CompanyId,
+                    EmployeeId = s.EmployeeId,
+                    LocationId = s.LocationId,
+                    Wage = s.Wage,
+                    StartTime = s.StartTime.ToLocalTime(),
+                    EndTime = s.EndTime.ToLocalTime()
+                };
+            }).ToList();
         }
     }
 }
