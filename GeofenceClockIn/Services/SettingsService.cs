@@ -20,7 +20,12 @@ namespace GeofenceClockIn.Services
         {
             get
             {
-                return JsonConvert.DeserializeObject<Shift>(AppSettings.GetValueOrDefault("currentshift", null));
+                string setting = AppSettings.GetValueOrDefault("currentshift", null);
+                if(setting != null)
+                {
+                    return JsonConvert.DeserializeObject<Shift>(setting);
+                }
+                return null;
             }
             set
             {

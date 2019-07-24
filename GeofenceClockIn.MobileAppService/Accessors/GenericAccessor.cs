@@ -20,7 +20,7 @@ namespace GeofenceClockIn.MobileAppService.Accessors
         {
             List<Shift> listOfShifts = new List<Shift>();
             string sqlQuery = "SELECT StartTime, EndTime, EmployeeId, LocationId, CompanyId, WageTitle, WageHourlyRate " +
-                "FROM Shifts WHERE EmployeeId = @employeeId;";
+                "FROM Shifts WHERE EmployeeId = @employeeId ORDER BY StartTime DESC;";
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -59,7 +59,7 @@ namespace GeofenceClockIn.MobileAppService.Accessors
 
         public string CreateShift(Shift shift)
         {
-            string createdId = default;
+            string createdId = string.Empty;
             string sqlQuery = "INSERT INTO Shifts VALUES (@startTime, @endTime, @employeeId, @locationId, @companyId, @wageTitle, @wageHourlyRate); " +
                 "SELECT SCOPE_IDENTITY();";
 
@@ -86,7 +86,7 @@ namespace GeofenceClockIn.MobileAppService.Accessors
 
         public string DeleteShift(string id)
         {
-            string deletedId = default;
+            string deletedId = string.Empty;
             string sqlQuery = "DELETE FROM Shifts WHERE Id = @id;";
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -109,7 +109,7 @@ namespace GeofenceClockIn.MobileAppService.Accessors
 
         public Shift UpdateShift(string id, Shift shift)
         {
-            Shift updatedShift = default;
+            Shift updatedShift = null;
             string sqlQuery = "UPDATE Shifts SET " +
                 "StartTime = @startTime, " +
                 "EndTime = @endTime, " +

@@ -40,6 +40,8 @@ namespace GeofenceClockIn.ViewModels
             StartShiftCommand = new Command(OnStartShift);
             EndShiftCommand = new Command(OnEndShift);
 
+            GeofenceCircularRegion region = new GeofenceCircularRegion("Geo1", 41.43, -97.36, 1000);
+            CrossGeofence.Current.StartMonitoring(region);
             _apiService = new ApiService();
         }
 

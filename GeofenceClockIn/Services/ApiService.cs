@@ -10,7 +10,7 @@ namespace GeofenceClockIn.Services
 {
     public class ApiService
     {
-        string baseUrl = "https://geofenceclockinmobileappservice20190723035228.azurewebsites.net/shifts";
+        string baseUrl = "https://geofenceclockinmobileappservice20190723035228.azurewebsites.net/shifts/";
         HttpClient httpClient;
 
         public ApiService()
@@ -20,7 +20,7 @@ namespace GeofenceClockIn.Services
 
         public void CreateShift(Shift shift)
         {
-            HttpContent body = new StringContent(JsonConvert.SerializeObject(shift));
+            HttpContent body = new StringContent(JsonConvert.SerializeObject(shift),System.Text.Encoding.UTF8, "application/json");
             var response = httpClient.PostAsync($"{baseUrl}/create", body).Result;
 
             int i = 88;
@@ -35,15 +35,6 @@ namespace GeofenceClockIn.Services
 
         public async Task<List<Shift>> GetAllShifts(string employeeId)
         {
-            /*var response = httpClient.GetAsync($"{baseUrl}/get/{employeeId}").Result;
-            var uri = "https://geofenceclockinmobileappservice20190723035228.azurewebsites.net/shifts/get/Jarod";
-            var response = httpClient.GetAsync(uri).Result;
-
-            var temp = response.Content.ToString();
-            List<Shift> shifts = JsonConvert.DeserializeObject<List<Shift>>(temp);
-
-            return shifts;*/
-
             string apiRequest = $"{baseUrl}/get/{employeeId}";
 
             try
@@ -63,5 +54,14 @@ namespace GeofenceClockIn.Services
                 throw;
             }
         }
+
+        /*public List<Shift> GetAllShifts(string employeeId)
+        {
+            var response = httpClient.GetAsync($"{baseUrl}/get/{employeeId}").Result;
+
+            List<Shift> shifts = JsonConvert.DeserializeObject<List<Shift>>(response.Content.ToString());
+
+            return shifts;
+        }*/
     }
 }
