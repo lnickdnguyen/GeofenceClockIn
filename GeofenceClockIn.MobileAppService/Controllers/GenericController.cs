@@ -26,7 +26,7 @@ namespace GeofenceClockIn.MobileAppService.Controllers
         [HttpGet("shifts/get/{employeeId}")]
         public ActionResult<List<Shift>> GetAllShiftsByEmployeeId(string employeeId)
         {
-            List<Shift> listOfShifts = default;
+            List<Shift> listOfShifts = null;
 
             try
             {
@@ -43,7 +43,7 @@ namespace GeofenceClockIn.MobileAppService.Controllers
         [HttpPost("shifts/create")]
         public ActionResult<string> CreateShift([FromBody]Shift shift)
         {
-            string createdId = default;
+            string createdId = null;
 
             try
             {
@@ -60,7 +60,7 @@ namespace GeofenceClockIn.MobileAppService.Controllers
         [HttpPut("shifts/update/{id}")]
         public ActionResult<Shift> UpdateShift(string id, [FromBody] Shift shift)
         {
-            Shift updatedShift = default;
+            Shift updatedShift = null;
 
             try
             {
@@ -77,7 +77,7 @@ namespace GeofenceClockIn.MobileAppService.Controllers
         [HttpDelete("shifts/delete/{id}")]
         public ActionResult<string> Delete(string id)
         {
-            string deletedId = default;
+            string deletedId = null;
 
             try
             {

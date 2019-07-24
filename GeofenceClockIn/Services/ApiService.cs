@@ -8,7 +8,7 @@ namespace GeofenceClockIn.Services
 {
     public class ApiService
     {
-        string baseUrl = "https://localhost:5001/shifts/";
+        string baseUrl = "https://geofenceclockinmobileappservice20190723035228.azurewebsites.net/shifts/";
         HttpClient httpClient;
 
         public ApiService()
@@ -18,7 +18,7 @@ namespace GeofenceClockIn.Services
 
         public void CreateShift(Shift shift)
         {
-            HttpContent body = new StringContent(JsonConvert.SerializeObject(shift));
+            HttpContent body = new StringContent(JsonConvert.SerializeObject(shift),System.Text.Encoding.UTF8, "application/json");
             var response = httpClient.PostAsync($"{baseUrl}/create", body).Result;
 
             int i = 88;

@@ -7,6 +7,7 @@ using Plugin.Geofence;
 using Plugin.Geofence.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
+using GeofenceClockIn.Services;
 
 namespace GeofenceClockIn
 {
@@ -47,7 +48,8 @@ namespace GeofenceClockIn
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+			// Handle when your app starts
+			SettingsService.CurrentShift = null;
         }
 
         protected override void OnSleep()
