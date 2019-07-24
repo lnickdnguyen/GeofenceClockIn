@@ -18,7 +18,7 @@ namespace GeofenceClockIn.Services
 
         public void CreateShift(Shift shift)
         {
-            HttpContent body = new StringContent(JsonConvert.SerializeObject(shift));
+            HttpContent body = new StringContent(JsonConvert.SerializeObject(shift),System.Text.Encoding.UTF8, "application/json");
             var response = httpClient.PostAsync($"{baseUrl}/create", body).Result;
 
             int i = 88;
