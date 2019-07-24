@@ -20,7 +20,7 @@ namespace GeofenceClockIn.MobileAppService.Accessors
         {
             List<Shift> listOfShifts = new List<Shift>();
             string sqlQuery = "SELECT StartTime, EndTime, EmployeeId, LocationId, CompanyId, WageTitle, WageHourlyRate " +
-                "FROM Shifts WHERE EmployeeId = @employeeId;";
+                "FROM Shifts WHERE EmployeeId = @employeeId ORDER BY StartTime DESC;";
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
