@@ -31,10 +31,10 @@
 
     <!-- Your Pages -->
     <TabBar>
-        <Tab Title="Browse" Icon="tab_feed.png">
+        <Tab Title="Now" Icon="location_pin.png">
             <ShellContent ContentTemplate="{DataTemplate local:CurrentShiftPage}" />
         </Tab>
-        <Tab Title="About" Icon="tab_about.png">
+        <Tab Title="History" Icon="tab_feed.png">
             <ShellContent ContentTemplate="{DataTemplate local:AllShiftsPage}" />
         </Tab>
     </TabBar>
