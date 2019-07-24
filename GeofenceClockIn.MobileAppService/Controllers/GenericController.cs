@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GeofenceClockIn.MobileAppService.Services;
+using GeofenceClockIn.Models;
 using Microsoft.AspNetCore.Mvc;
-using Square.Connect.Model;
 
 namespace GeofenceClockIn.MobileAppService.Controllers
 {
-    public class SquareController : Controller
+    public class GenericController : Controller
     {
-        private readonly ISquareService _squareService;
+        private readonly IGenericService _genericService;
 
-        public SquareController(ISquareService squareService)
+        public GenericController(IGenericService genericService)
         {
-            _squareService = squareService;
+            _genericService = genericService;
         }
 
         // GET: /<controller>/
@@ -27,11 +27,10 @@ namespace GeofenceClockIn.MobileAppService.Controllers
         public ActionResult<List<Shift>> GetAllShiftsByEmployeeId(string employeeId)
         {
             List<Shift> listOfShifts = default;
-            employeeId = null;
 
             try
             {
-                listOfShifts = _squareService.GetAllShiftsByEmployeeId(employeeId);
+                listOfShifts = _genericService.GetAllShiftsByEmployeeId(employeeId);
             }
             catch (Exception e)
             {
@@ -45,11 +44,10 @@ namespace GeofenceClockIn.MobileAppService.Controllers
         public ActionResult<string> CreateShift([FromBody]Shift shift)
         {
             string createdId = default;
-            //Shift newShift = new Shift(EmployeeId: "mxYbEc9mwv8HvzTDqUbI", LocationId: "Q1M7965YS9HY4", StartAt: "2018-07-23T10:00:00-07:00");
 
             try
             {
-                createdId = _squareService.CreateShift(shift);
+                createdId = _genericService.CreateShift(shift);
             }
             catch (Exception e)
             {
@@ -66,7 +64,7 @@ namespace GeofenceClockIn.MobileAppService.Controllers
 
             try
             {
-                updatedShift = _squareService.UpdateShift(id, shift);
+                updatedShift = _genericService.UpdateShift(id, shift);
             }
             catch (Exception e)
             {
@@ -83,7 +81,7 @@ namespace GeofenceClockIn.MobileAppService.Controllers
 
             try
             {
-                deletedId = _squareService.DeleteShift(id);
+                deletedId = _genericService.DeleteShift(id);
             }
             catch (Exception e)
             {

@@ -10,6 +10,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.AspNetCore.Builder.Internal;
 using GeofenceClockIn.MobileAppService.Accessors;
 using GeofenceClockIn.MobileAppService.Services;
+using Xamarin.Forms;
 
 namespace GeofenceClockIn.MobileAppService
 {
@@ -26,11 +27,9 @@ namespace GeofenceClockIn.MobileAppService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            Square.Connect.Client.Configuration config = Square.Connect.Client.Configuration.Default;
-            config.AccessToken = "EAAAEJ0uwngIKmneqV9Og2nH-GWmsCUdUPzy9hRjw0qtiJAePUZeZ385qQbWnnV7";
-            services.AddSingleton<Square.Connect.Client.Configuration>(config);
-            services.AddSingleton<ISquareAccessor, SquareAccessor>();
-            services.AddSingleton<ISquareService, SquareService>();
+            services.AddSingleton<IConfiguration>(Configuration);
+            services.AddSingleton<IGenericAccessor, GenericAccessor>();
+            services.AddSingleton<IGenericService, GenericService>();
 
             services.AddSwaggerGen(c =>
             {
