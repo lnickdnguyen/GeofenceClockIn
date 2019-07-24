@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="GeofenceClockIn.Views.CurrentShiftPage"
              xmlns:local="clr-namespace:GeofenceClockIn.ViewModels"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              Title="{Binding Title}">
     
     <ContentPage.BindingContext>
@@ -13,7 +14,7 @@
         <ScrollView>
             <AbsoluteLayout>
                 <Frame AbsoluteLayout.LayoutBounds="0,0,1,.65" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Red" >
-
+                    <!--<maps:Map x:Name="MyMap" IsShowingUser="true" MapType="Hybrid" />-->
                 </Frame>
                 <Frame IsVisible="{Binding IsStartShiftActive}" AbsoluteLayout.LayoutBounds="1,1,1,.35" AbsoluteLayout.LayoutFlags="All" BackgroundColor="LightGray" >
                     <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="20" Padding="20" BackgroundColor="White">
