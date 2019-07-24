@@ -46,7 +46,7 @@ namespace GeofenceClockIn.ViewModels
             StartShiftCommand = new Command(OnStartShift);
             EndShiftCommand = new Command(OnEndShift);
 
-            GeofenceCircularRegion region = new GeofenceCircularRegion("Geo1", 47.637, -122.133, 1000);
+            GeofenceCircularRegion region = new GeofenceCircularRegion("Geo1", 47.637, -122.133, 200);
             CrossGeofence.Current.StartMonitoring(region);
             _apiService = new ApiService();
 
@@ -83,12 +83,14 @@ namespace GeofenceClockIn.ViewModels
 
             IsStartShiftActive = false;
             IsEndShiftActive = true;
+            App.ShiftGoing = true;
         }
 
         private void OnEndShift()
         {
-            _isStartShiftActive = true;
-            _isEndShiftActive = false;
+            IsStartShiftActive = true;
+            IsEndShiftActive = false;
+            App.ShiftGoing = false;
 
             if (SettingsService.CurrentShift == null)
                 return;
