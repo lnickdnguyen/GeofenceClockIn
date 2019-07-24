@@ -11,6 +11,7 @@
         <local:CurrentShiftViewModel />
     </ContentPage.BindingContext>
     
+    
     <ContentPage.Content>
         <ScrollView>
             <AbsoluteLayout>
@@ -22,8 +23,8 @@
                         <Label Text="Start Your Shift" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
                         <Label Text="Once you arrive at work, we'll automatically start your shift" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" HorizontalTextAlignment="Center"/>
                         <StackLayout Orientation="Horizontal" HeightRequest="75" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="0">
-                            <Button Text="X" HorizontalOptions="Start" VerticalOptions="End" />
-                            <Button Command="{Binding StartShiftCommand}" Text=">" HorizontalOptions="EndAndExpand" VerticalOptions="End" />
+                            <Button Text="☺" HorizontalOptions="Start" VerticalOptions="End" />
+                            <Button Command="{Binding StartShiftCommand}" Text="►" HorizontalOptions="EndAndExpand" VerticalOptions="End" />
                         </StackLayout>
                     </StackLayout>
                 </Frame>
@@ -32,11 +33,11 @@
                         <Label Text="You're Clocked In!" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" TextColor="Green"/>
                         <Label Text="We'll clock you out automatically once you leave work" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" HorizontalTextAlignment="Center"/>
                         <StackLayout Orientation="Horizontal" HeightRequest="75" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="0">
-                            <Button Text="X" HorizontalOptions="Start" VerticalOptions="End" />
+                            <Button Text="☺" HorizontalOptions="Start" VerticalOptions="End" />
                             <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Spacing="0">
                                 <TimePicker Time="{Binding ClockedInTime}"></TimePicker>
                             </StackLayout>
-                            <Button Command="{Binding EndShiftCommand}" Text="X" HorizontalOptions="EndAndExpand" VerticalOptions="End" />
+                            <Button Command="{Binding EndShiftCommand}" Text="✖" HorizontalOptions="EndAndExpand" VerticalOptions="End" />
                         </StackLayout>
                     </StackLayout>
                 </Frame>
