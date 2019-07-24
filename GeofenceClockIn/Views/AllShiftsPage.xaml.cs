@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using GeofenceClockIn.ViewModels;
 using Xamarin.Forms;
 
 namespace GeofenceClockIn.Views
@@ -9,6 +11,13 @@ namespace GeofenceClockIn.Views
         public AllShiftsPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            var viewModel = (AllShiftsViewModel)BindingContext;
+            Task.Run(() => viewModel.GetAllShifts());
+            base.OnAppearing();
         }
     }
 }

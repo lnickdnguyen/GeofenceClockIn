@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using GeofenceClockIn.Models;
 using GeofenceClockIn.Services;
 using Plugin.Geofence;
@@ -25,6 +26,13 @@ namespace GeofenceClockIn.ViewModels
             set { SetProperty(ref _isEndShiftActive, value); }
         }
 
+        private TimeSpan _clockedInTime;
+        public TimeSpan ClockedInTime
+        {
+            get => _clockedInTime;
+            set => SetProperty(ref _clockedInTime, value);
+        }
+
         public Command StartShiftCommand { get; set; }
         public Command EndShiftCommand { get; set; }
 
@@ -32,8 +40,6 @@ namespace GeofenceClockIn.ViewModels
 
         public CurrentShiftViewModel()
         {
-            Title = "hello";
-
             _isStartShiftActive = true;
             _isEndShiftActive = false;
 
@@ -43,6 +49,24 @@ namespace GeofenceClockIn.ViewModels
             GeofenceCircularRegion region = new GeofenceCircularRegion("Geo1", 41.43, -97.36, 1000);
             CrossGeofence.Current.StartMonitoring(region);
             _apiService = new ApiService();
+
+            Task.Run(() => ShiftGoingListener());
+
+            ClockedInTime = DateTime.Now.TimeOfDay;
+        }
+
+        private void ShiftGoingListener()
+        {
+            while (true)
+            {
+                Task.Delay(1000).Wait();
+                if(App.ShiftGoing != IsEndShiftActive)
+                {
+                    IsStartShiftActive = !App.ShiftGoing;
+                    IsEndShiftActive = App.ShiftGoing;
+                    ClockedInTime = DateTime.Now.TimeOfDay;
+                }
+            }
         }
 
         private void OnStartShift()

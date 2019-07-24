@@ -14,6 +14,8 @@ namespace GeofenceClockIn
     public partial class App : Application
     {
 
+        public static bool ShiftGoing;
+
         public App()
         {
             InitializeComponent();

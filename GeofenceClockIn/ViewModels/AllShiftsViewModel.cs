@@ -20,7 +20,7 @@ namespace GeofenceClockIn.ViewModels
         public AllShiftsViewModel()
         {
             _apiService = new ApiService();
-            GetAllShifts();
+            //GetAllShifts();
         }
 
         public async void GetAllShifts()

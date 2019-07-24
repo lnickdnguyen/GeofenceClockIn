@@ -60,6 +60,7 @@ namespace GeofenceClockIn.Services
                 };
 
                 SettingsService.CurrentShift = newShift;
+                App.ShiftGoing = true;
             }
             else if(result.Transition == GeofenceTransition.Exited)
             {
@@ -70,6 +71,7 @@ namespace GeofenceClockIn.Services
                 currentShift.EndTime = DateTime.Now;
 
                 apiService.CreateShift(currentShift);
+                App.ShiftGoing = false;
             }
         }
     }
