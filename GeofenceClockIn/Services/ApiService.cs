@@ -8,7 +8,7 @@ namespace GeofenceClockIn.Services
 {
     public class ApiService
     {
-        string baseUrl = "https://localhost:5001/shifts/";
+        string baseUrl = "https://geofenceclockinmobileappservice20190723035228.azurewebsites.net/shifts/";
         HttpClient httpClient;
 
         public ApiService()
