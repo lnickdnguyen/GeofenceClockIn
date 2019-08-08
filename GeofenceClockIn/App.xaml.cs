@@ -8,6 +8,7 @@ using Plugin.Geofence.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using GeofenceClockIn.Services;
+using System.Threading.Tasks;
 
 namespace GeofenceClockIn
 {
@@ -20,12 +21,12 @@ namespace GeofenceClockIn
         {
             InitializeComponent();
 
-            CheckPermissions();
-
             MainPage = new AppShell();
+
+            CheckPermissions().Wait();
         }
 
-        private async void CheckPermissions()
+        private async Task CheckPermissions()
         {
             bool locationStatus = (await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location)) == PermissionStatus.Granted;
             bool locationAlwaysStatus = (await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.LocationAlways)) == PermissionStatus.Granted;
