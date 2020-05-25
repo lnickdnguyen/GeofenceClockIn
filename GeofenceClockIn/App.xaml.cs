@@ -21,9 +21,9 @@ namespace GeofenceClockIn
         {
             InitializeComponent();
 
-            CheckPermissions().Wait();
-
             MainPage = new AppShell();
+
+            CheckPermissions().Wait();
         }
 
         private async Task CheckPermissions()
