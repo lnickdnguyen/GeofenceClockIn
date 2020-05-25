@@ -16,9 +16,9 @@ namespace GeofenceClockIn.Views
 
             var location = Geolocation.GetLastKnownLocationAsync().Result;
 
-            MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(location.Latitude, location.Longitude), Distance.FromMiles(5)));
+            //MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(location.Latitude, location.Longitude), Distance.FromMiles(5)));
 
-            MyMap.Pins.Add(new Pin { Label="Work", Position=new Position(47.637, -122.133) });
+            //MyMap.Pins.Add(new Pin { Label="Work", Position=new Position(47.637, -122.133) });
         }
     }
 }

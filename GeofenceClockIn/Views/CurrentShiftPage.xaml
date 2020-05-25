@@ -15,7 +15,7 @@
         <ScrollView>
             <AbsoluteLayout>
                 <Frame AbsoluteLayout.LayoutBounds="0,0,1,.65" AbsoluteLayout.LayoutFlags="All" BackgroundColor="White" Padding="0">
-                    <maps:Map x:Name="MyMap" IsShowingUser="true" MapType="Street" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                    <!--<maps:Map x:Name="MyMap" IsShowingUser="true" MapType="Street" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>-->
                 </Frame>
                 <Frame IsVisible="{Binding IsStartShiftActive}" AbsoluteLayout.LayoutBounds="1,1,1,.35" AbsoluteLayout.LayoutFlags="All" BackgroundColor="LightGray" >
                     <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="20" Padding="20" BackgroundColor="#FBF9FC">

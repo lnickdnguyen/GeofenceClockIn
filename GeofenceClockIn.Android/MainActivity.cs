@@ -37,10 +37,7 @@ namespace GeofenceClockIn.Droid
             Xamarin.FormsMaps.Init(this, savedInstanceState); //Initialize Mapview
             LoadApplication(new App());
 
-            
-            
-
-            //StartGeofencePlugin();
+            StartGeofencePlugin();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

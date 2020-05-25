@@ -8,6 +8,7 @@ using Plugin.Geofence.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using GeofenceClockIn.Services;
+using System.Threading.Tasks;
 
 namespace GeofenceClockIn
 {
@@ -20,12 +21,12 @@ namespace GeofenceClockIn
         {
             InitializeComponent();
 
-            CheckPermissions();
+            CheckPermissions().Wait();
 
             MainPage = new AppShell();
         }
 
-        private async void CheckPermissions()
+        private async Task CheckPermissions()
         {
             bool locationStatus = (await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location)) == PermissionStatus.Granted;
             bool locationAlwaysStatus = (await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.LocationAlways)) == PermissionStatus.Granted;
@@ -44,7 +45,7 @@ namespace GeofenceClockIn
             }
             else
             {
-                await Shell.Current.DisplayAlert("Permissions Needed", "App will not function since you did not grant permission data. Please grant permission to location to 'GeofenceClockIn' in settings.", "Yeah man, shore.");
+               // await Shell.Current.DisplayAlert("Permissions Needed", "App will not function since you did not grant permission data. Please grant permission to location to 'GeofenceClockIn' in settings.", "Yeah man, shore.");
             }
         }
 
